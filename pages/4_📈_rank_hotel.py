@@ -6,18 +6,24 @@ st.set_page_config(
     layout="wide",
 )
 
-# Load data from bookings.xlsx
-@st.cache_data
+# Load data from bookings.pkl
+@st.cache_data(ttl=300)  # Cache data for 300 seconds (5 minutes)
 def load_data(file_path):
     try:
-        df = pd.read_excel(file_path)
+        df = pd.read_pickle(file_path)
         return df
     except FileNotFoundError:
-        st.error("The bookings.xlsx file was not found.")
+        st.error("The bookings.pkl file was not found.")
         return pd.DataFrame()
 
+# File path
+file_path = "bookings.pkl"  # Update this path if needed
+
+# Add a refresh button to reload data
+if st.button("Refresh Data"):
+    st.cache_data.clear()
+
 # Load the dataset
-file_path = "bookings.xlsx"  # Update this path if needed
 bookings_data = load_data(file_path)
 
 # Check if data is loaded successfully

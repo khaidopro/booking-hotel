@@ -65,7 +65,6 @@ two = st.empty()
 three = st.empty()
 
 df_final = pd.read_pickle("data.pkl")
-df_final = df_final.drop_duplicates()
 
 def fetch_poster(movie_id):
     url = "https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/{}".format(movie_id)
@@ -123,6 +122,8 @@ def save_booking_to_excel(data):
             df.to_excel(writer, index=False, header=startrow == 0, startrow=startrow)
     except FileNotFoundError:
         df.to_excel("bookings.xlsx", index=False)
+    df_book = pd.read_excel("bookings.xlsx")
+    pickle.dump(df_book,open('bookings.pkl','wb'))
 
 import streamlit.components.v1 as components
 

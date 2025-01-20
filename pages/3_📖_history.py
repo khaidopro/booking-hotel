@@ -12,7 +12,7 @@ st.set_page_config(
 def load_booking_history(file_path):
     try:
         # Read the Excel file
-        df = pd.read_excel(file_path)
+        df = pd.read_pickle(file_path)
         return df
     except FileNotFoundError:
         st.error("No booking history found. Make sure 'bookings.xlsx' exists.")
@@ -22,7 +22,8 @@ def load_booking_history(file_path):
 st.title("📖 Booking History")
 
 # Load the booking data
-file_path = "bookings.xlsx"
+file_path = "bookings.pkl"
+
 booking_history = load_booking_history(file_path)
 
 if booking_history is not None:
