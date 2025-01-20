@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_login_auth_ui.widgets import __login__
+from widgets import __login__
 import base64
 import streamlit as st
 import base64
