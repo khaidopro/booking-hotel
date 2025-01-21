@@ -37,16 +37,17 @@ chatbot_html = """
 <body>
     <!-- Coze Chat Integration -->
     <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.0/libs/oversea/index.js"></script>
-    <script>
+      <script>
           new CozeWebSDK.WebChatClient({
             config: {
-              bot_id: '7461250636273762322',
+              bot_id: '7462307403599200273',
             },
             componentProps: {
               title: 'Coze',
             },
           });
-    </script>
+      </script>
+
 </body>
 </html>
 """
